@@ -2,26 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components{
+    .animate-scroll{
+        animation: scroll 30s linear  infinite;
+    }
+    @keyframes scroll {
+        from{
+            transform: translateX(0);
+        }
+        to{
+            transform: translateX(-350%);
+        }
+    }
+    .animate-scroll2{
+        animation: scroll2 30s linear  infinite;
+    }
+    @keyframes scroll2 {
+        from{
+            transform: translateX(350%);
+        }
+        to{
+            transform: translateX(0);
+        }
+    }
+    .animate-large-scroll2{
+        animation: large-scroll2 30s linear  infinite;
+    }
+    @keyframes large-scroll2 {
+        from{
+            transform: translateX(175%);
+        }
+        to{
+            transform: translateX(0);
+        }
+    }
+    .animate-large-scroll{
+        animation: large-scroll 30s linear  infinite;
+    }
+    @keyframes large-scroll {
+        from{
+            transform: translateX(0);
+        }
+        to{
+            transform: translateX(-175%);
+        }
+    }
+    .stop:hover > div{
+        animation-play-state: paused;
+    }
 }
