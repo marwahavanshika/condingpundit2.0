@@ -21,25 +21,25 @@ const Teamcard = ({ title, id, img, post, links }: teamcard) => {
   let secondclass = ""
   if (id & 1) {
     baseclass = " group min-w-[50%] lg:min-w-[25%] flex justify-center px-5 rounded-2xl relative rotate-2"
-    secondclass = " overflow-hidden rounded-2xl relative group-hover:rotate-[-2deg] group-hover:scale-110 group-hover:duration-300 linear group-hover:linear"
+    secondclass = " overflow-hidden flex items-center justify-center rounded-2xl relative group-hover:rotate-[-2deg] group-hover:scale-110 group-hover:duration-300 linear group-hover:linear"
   }
   else {
     baseclass = " group min-w-[50%] lg:min-w-[25%] flex justify-center px-5 rounded-2xl relative rotate-[-2deg]"
-    secondclass = " overflow-hidden rounded-2xl relative group-hover:rotate-[2deg] group-hover:scale-110 group-hover:duration-300 linear group-hover:linear"
+    secondclass = " overflow-hidden flex items-center justify-center rounded-2xl relative group-hover:rotate-[2deg] group-hover:scale-110 group-hover:duration-300 linear group-hover:linear"
   }
   return (
     <div className={baseclass}>
       <div className={secondclass}>
-        <div className=" absolute w-full h-full inset-0 bg-[rgba(0,0,0,0.7)] opacity-0 group-hover:opacity-70 transition-opacity"></div>
+        <div className=" absolute w-full h-full inset-0 bg-[rgba(0,0,0,0.7)] opacity-0 group-hover:opacity-80 transition-opacity"></div>
         <img src={img} alt={title} className="aspect-[4/3] w-full h-full flex bg-slate-200 min-w-full object-cover " />
-        <div className=" absolute top-3/4 left-1/4 opacity-0 group-hover:opacity-100 ease-in transition-all group-hover:top-1/2">
-          <h3 className="text-white text-xl lg:text-2xl ">{title}</h3>
-          <h4 className=" text-white text-xs md:text-sm lg:text-lg">{post}</h4>
+        <div className=" absolute mt-6 md:mt-24 flex flex-col items-center justify-center  opacity-0 group-hover:opacity-100 ease-in transition-all">
+          <h3 className="text-white text-[0.8rem] md:text-xl lg:text-2xl ">{title}</h3>
+          <h4 className=" text-white text-[0.5rem] md:text-sm lg:text-lg">{post}</h4>
           <ul className=" flex flex-row items-center justify-center gap-2">
             {links.map(link => (
               <li key={link.to}>
                 <a href={link.to}>
-                  <img src={icons[link.icon]} alt="link" />
+                  <img src={icons[link.icon]} alt="link" className="object-contain" />
                 </a>
               </li>
             ))}
