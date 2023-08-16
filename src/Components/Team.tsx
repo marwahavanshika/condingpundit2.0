@@ -17,37 +17,52 @@ const Teamcard = ({ title, id, img, post, links }: teamcard) => {
     'https://static.cdninstagram.com/rsrc.php/yv/r/BTPhT6yIYfq.ico',
     "https://img.icons8.com/dusk/40/null/github.png"
   ]// 0 for facebook 1 for linkedin 2 for instagram 3 for github
-  let baseclass = ""
-  let secondclass = ""
   if (id & 1) {
-    baseclass = " group min-w-[50%] lg:min-w-[25%] flex justify-center px-5 rounded-2xl relative rotate-2"
-    secondclass = " overflow-hidden flex items-center justify-center rounded-2xl relative group-hover:rotate-[-2deg] group-hover:scale-110 group-hover:duration-300 linear group-hover:linear"
-  }
-  else {
-    baseclass = " group min-w-[50%] lg:min-w-[25%] flex justify-center px-5 rounded-2xl relative rotate-[-2deg]"
-    secondclass = " overflow-hidden flex items-center justify-center rounded-2xl relative group-hover:rotate-[2deg] group-hover:scale-110 group-hover:duration-300 linear group-hover:linear"
-  }
-  return (
-    <div className={baseclass}>
-      <div className={secondclass}>
-        <div className=" absolute w-full h-full inset-0 bg-[rgba(0,0,0,0.7)] opacity-0 group-hover:opacity-80 transition-opacity"></div>
-        <img src={img} alt={title} className="aspect-[4/3] w-full h-full flex bg-slate-200 min-w-full object-cover " />
-        <div className=" absolute mt-6 md:mt-24 flex flex-col items-center justify-center  opacity-0 group-hover:opacity-100 ease-in transition-all">
-          <h3 className="text-white text-[0.8rem] md:text-xl lg:text-2xl ">{title}</h3>
-          <h4 className=" text-white text-[0.5rem] md:text-sm lg:text-lg">{post}</h4>
-          <ul className=" flex flex-row items-center justify-center gap-2">
-            {links.map(link => (
-              <li key={link.to}>
-                <a href={link.to}>
-                  <img src={icons[link.icon]} alt="link" className="object-contain" />
-                </a>
-              </li>
-            ))}
-          </ul>
+    return (
+      <div className={" group min-w-[50%] lg:min-w-[25%] flex justify-center px-5 rounded-2xl relative rotate-2"}>
+        <div className={" overflow-hidden flex items-center justify-center rounded-2xl relative group-hover:rotate-[-2deg] group-hover:scale-110 group-hover:duration-300 linear group-hover:linear"}>
+          <div className={" absolute w-full min-w-full h-full inset-0 bg-[rgba(0,0,0,0.7)] opacity-0 group-hover:opacity-80 transition-opacity"}></div>
+          <img src={img} alt={title} className={"aspect-[4/3] w-full h-full flex bg-slate-200 min-w-full object-cover " }/>
+          <div className={" absolute mt-6 md:mt-24 flex flex-col items-center justify-center  opacity-0 group-hover:opacity-100 ease-in transition-all"}>
+            <h3 className={"text-white text-[0.8rem] md:text-xl lg:text-2xl "}>{title}</h3>
+            <h4 className={" text-white text-[0.5rem] md:text-sm lg:text-lg"}>{post}</h4>
+            <ul className={" flex flex-row items-center justify-center gap-2"}>
+              {links.map(link => (
+                <li key={link.to}>
+                  <a href={link.to}>
+                    <img src={icons[link.icon]} alt={"link"} className={"w-3 sm:w-4 md:w-6 lg:w-8 object-contain"} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
+  else {
+    return (
+      <div className={" group min-w-[50%] lg:min-w-[25%] flex justify-center px-5 rounded-2xl relative rotate-[-2deg]"}>
+        <div className={" overflow-hidden flex items-center justify-center rounded-2xl relative group-hover:rotate-[2deg] group-hover:scale-110 group-hover:duration-300 linear group-hover:linear"}>
+          <div className={" absolute w-full min-w-full h-full inset-0 bg-[rgba(0,0,0,0.7)] opacity-0 group-hover:opacity-80 transition-opacity"}></div>
+          <img src={img} alt={title} className={"aspect-[4/3] w-full h-full flex bg-slate-200 min-w-full object-cover "} />
+          <div className={" absolute mt-6 md:mt-24 flex flex-col items-center justify-center  opacity-0 group-hover:opacity-100 ease-in transition-all"}>
+            <h3 className={"text-white text-[0.8rem] md:text-xl lg:text-2xl "}>{title}</h3>
+            <h4 className={" text-white text-[0.5rem] md:text-sm lg:text-lg"}>{post}</h4>
+            <ul className={" flex flex-row items-center justify-center gap-2"}>
+              {links.map(link => (
+                <li key={link.to}>
+                  <a href={link.to}>
+                    <img src={icons[link.icon]} alt={"link"} className={" w-3 sm:w-4  md:w-6 lg:w-8 object-contain"} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
 
 function Team() {
@@ -130,15 +145,13 @@ function Team() {
     },
   ]
   return (
-    <div className="flex flex-col bg-teal-600">
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-mono font-semibold text-white mx-auto mt-3">Our Code Coaches</h1>
-      <div className=" relative flex overflow-x-hidden overflow-y-visible w-auto stop">
-        <div className="w-full py-12 lg:py-20 whitespace-nowrap flex flex-row animate-scroll lg:animate-large-scroll hover:stop">
+      <div className={" relative flex overflow-x-hidden overflow-y-visible w-auto stop bg-teal-300"}>
+        <div className={"w-full py-12 lg:py-20 whitespace-nowrap flex flex-row animate-scroll lg:animate-large-scroll stop"}>
           {Team.map((alt, index) => (
             <Teamcard {...alt} key={index} />
           ))}
         </div>
-        <div className="w-full absolute top-0 py-12 lg:py-20 whitespace-nowrap flex flex-row animate-scroll2 lg:animate-large-scroll2">
+        <div className={"w-full absolute top-0 py-12 lg:py-20 whitespace-nowrap flex flex-row animate-scroll2 lg:animate-large-scroll2"}>
           {
             Team.map((alt, index) => (
               <Teamcard {...alt} key={index} />
@@ -146,7 +159,6 @@ function Team() {
           }
         </div>
       </div>
-    </div>
   )
 }
 
